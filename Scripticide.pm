@@ -2,7 +2,7 @@ package Acme::Scripticide;
 
 use strict;
 use warnings;
-use version;our $VERSION = qv('0.0.1');
+use version;our $VERSION = qv('0.0.2');
 
 use File::Spec;
 use Carp;
@@ -39,7 +39,7 @@ __END__
 
 =head1 NAME
 
-Acme::Scripticide - Perl extension for blah blah blah
+Acme::Scripticide - Perl extension to allow your script to kill itself
 
 =head1 SYNOPSIS
 
