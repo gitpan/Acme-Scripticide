@@ -2,7 +2,7 @@ package Acme::Scripticide;
 
 use strict;
 use warnings;
-use version;our $VERSION = qv('0.0.2');
+use version;our $VERSION = qv('0.0.3');
 
 use File::Spec;
 use Carp;
@@ -47,7 +47,7 @@ Acme::Scripticide - Perl extension to allow your script to kill itself
  
    use Acme::Scripticide qw(Good bye cruel world); # auto call good_bye_cruel_world('Good bye cruel world')
 
-   use Acme::Scripticide ('.html', @msg); # put @msg in [$0 w/out .\w+].html, call good_bye_cruel_world()
+   use Acme::Scripticide ('.html', qw(Good bye cruel world)); # auto put "Good bye cruel world" in [$0 w/out .\w+].html, call good_bye_cruel_world()
 
    use Acme::Scripticide qw(good_bye_cruel_world); # only do it when and where you choose
 
@@ -58,8 +58,6 @@ Acme::Scripticide - Perl extension to allow your script to kill itself
        good_bye_cruel_world();
    }
  
-=head1 DESCRIPTION
-
 =head2 EXPORT
 
 None by default.
@@ -72,10 +70,10 @@ This will make your script not exist once its done:
     good_bye_cruel_world()
 
 This will replace your script with @note:
-    good_bye_cruel_world(@note)
+    good_bye_cruel_world($note)
    
 This will make your script not exist once its done and put @note in [$0 w/out .\w+].ext
-    good_bye_cruel_world('.ext', @note)
+    good_bye_cruel_world('.ext', $note)
 
 =head1 When this would actually be handy.
 
