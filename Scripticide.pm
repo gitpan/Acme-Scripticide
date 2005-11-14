@@ -2,7 +2,7 @@ package Acme::Scripticide;
 
 use strict;
 use warnings;
-use version;our $VERSION = qv('0.0.3');
+use version;our $VERSION = qv('0.0.4');
 
 use File::Spec;
 use Carp;
@@ -43,13 +43,21 @@ Acme::Scripticide - Perl extension to allow your script to kill itself
 
 =head1 SYNOPSIS
 
-   use Acme::Scripticide; # auto call good_bye_cruel_world()
+auto call good_bye_cruel_world()
+
+   use Acme::Scripticide; 
  
-   use Acme::Scripticide qw(Good bye cruel world); # auto call good_bye_cruel_world('Good bye cruel world')
+auto call good_bye_cruel_world('Good bye cruel world')
 
-   use Acme::Scripticide ('.html', qw(Good bye cruel world)); # auto put "Good bye cruel world" in [$0 w/out .\w+].html, call good_bye_cruel_world()
+   use Acme::Scripticide qw(Good bye cruel world);
 
-   use Acme::Scripticide qw(good_bye_cruel_world); # only do it when and where you choose
+auto put "Good bye cruel world" in [$0 w/out \.\w+$].html, call good_bye_cruel_world()
+
+   use Acme::Scripticide ('.html', qw(Good bye cruel world)); 
+
+only do it when and where you want
+
+   use Acme::Scripticide qw(good_bye_cruel_world);
 
    if(i_take_medication_and_therapy()) {
        print "Take that Tom Cruise, you wacky weirdo, tell Jackson howdy.";
@@ -67,12 +75,15 @@ You can export good_bye_cruel_world and then it won't be automatically done, onl
 =head1 good_bye_cruel_world()
 
 This will make your script not exist once its done:
+
     good_bye_cruel_world()
 
-This will replace your script with @note:
+This will replace your script with $note:
+
     good_bye_cruel_world($note)
    
-This will make your script not exist once its done and put @note in [$0 w/out .\w+].ext
+This will make your script not exist once its done and put $note in [$0 w/out .\w+].ext
+
     good_bye_cruel_world('.ext', $note)
 
 =head1 When this would actually be handy.
@@ -88,13 +99,16 @@ or say to create static files from a database:
     use Acme::Scripticide qw(good_bye_cruel_world);
     good_bye_cruel_world('.html', get_html($0));
 
-# now flowers.pl does not exist and flowers.html is there
+now flowers.pl does not exist and flowers.html is there
 
 You could have a directory full of those types of scripts and glob() them in and execute each one, once done you have a directory of corresponding static html files...
 
 =head1 Disclaimer
 
+Use at your own risk, this deletes your script so you've been warned :)
+
 Only kill your scripts. If you feel like hurting yourself, please seek professional help.
+
 In the interest of not being too morbid I refrained from making aliases to the function with more graphic names.
 
 =head1 AUTHOR
